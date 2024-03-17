@@ -1,0 +1,27 @@
+# Load Balancer Configuration
+listenAddress: "0.0.0.0:8080"
+tlsParams:
+  certificate: "certs/loadbalancer.crt"
+  privateKey: "certs/loadbalancer.key"
+  caCert: "certs/rootCA.pem"
+logLevel: "info"
+
+# Target Groups with Upstream Servers
+targetGroups:
+  - name: "FrontEndService" # HTTP service
+    upstreamServers:
+      - "127.0.0.1:8081"
+      - "127.0.0.1:8082"
+  - name: "DBService" # non HTTP service
+    upstreamServers:
+      - "127.0.0.1:8085"
+      - "127.0.0.1:8086"
+
+# Client to Target Group Mapping
+clients:
+  - clientId: "clientA.bardomain.com"
+    allowedTargetGroup: "FrontEndService"
+    requestsPerSecond: 10
+  - clientId: "clientB.bardomain.com"
+    allowedTargetGroup: "DBService"
+    requestsPerSecond: 5

@@ -1,0 +1,14 @@
+run:
+    deadline: 5m
+
+issues:
+    max-issues-per-linter: 0
+    max-same-issues: 0
+    exclude-use-default: false
+
+linters:
+    enable-all: true
+
+linters-settings:
+    staticcheck:
+        go: "1.22"

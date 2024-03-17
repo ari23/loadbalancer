@@ -1,0 +1,9 @@
+bin/*
+tests/integration/client/client
+tests/integration/server/server
+certs/*crt
+certs/*key
+certs/*csr
+certs/*pem
+certs/*srl
+

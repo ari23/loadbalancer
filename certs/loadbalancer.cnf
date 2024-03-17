@@ -1,0 +1,20 @@
+   [req]
+   prompt = no
+   default_bits = 2048
+   default_md = sha256
+   distinguished_name = dn
+   req_extensions = req_ext
+
+   [dn]
+   C = US
+   ST = WA
+   L = Seattle
+   O = FooOrg
+   CN = loadbalancer.foodomain.com
+
+   [req_ext]
+   subjectAltName = @alt_names
+
+   [alt_names]
+   DNS.1 = loadbalancer.foodomain.com
+   IP.1 = 127.0.0.1
